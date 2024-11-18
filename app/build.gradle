@@ -1,0 +1,13 @@
+apply from: "$rootDir/buildscripts/dependencies.gradle"
+apply from: "$rootDir/buildscripts/modules_configuration.gradle"
+
+applyModuleConfig(true)
+
+dependencies {
+
+    //declare multiple dependencies
+    implementation composeDependencies.values()
+    implementation androidCoreDependencies.values()
+    implementation networkDependencies.values()
+    implementation testsDependencies.values()
+}

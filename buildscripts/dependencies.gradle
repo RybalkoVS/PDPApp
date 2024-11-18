@@ -1,0 +1,35 @@
+apply from: "$rootDir/buildscripts/dependencies_versions.gradle"
+apply from: "$rootDir/buildscripts/app_properties.gradle"
+
+ext {
+    //retrofit
+    networkDependencies = [
+            retrofit: "com.squareup.retrofit2:retrofit:$retrofit_version",
+            gson    : "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    ]
+
+    //core android
+    androidCoreDependencies = [
+            core           : "androidx.core:core-ktx:$android_core_version",
+            appCompat      : "androidx.appcompat:appcompat:$android_app_compat_version",
+            google_material: "com.google.android.material:material:$android_material_version",
+            constraint     : "androidx.constraintlayout:constraintlayout:$android_constraint_version",
+    ]
+
+    //tests
+    testsDependencies = [
+            junit    : "junit:junit:$junit_version",
+            junit_ext: "androidx.test.ext:junit:$junit_ext_version",
+            espresso : "androidx.test.espresso:espresso-core:$espresso_version"
+    ]
+
+    //compose
+    composeDependencies = [
+            material3 : "androidx.compose.material3:material3:$compose_material3_version",
+            foundation: "androidx.compose.foundation:foundation:$compose_version",
+            compose_ui: "androidx.compose.ui:ui:$compose_version",
+            compose_runtime: "androidx.compose.runtime:runtime:$compose_version",
+            compose_activity: "androidx.activity:activity-compose:$compose_activity_version",
+            comose_compoler: "androidx.compose.compiler:compiler:$compose_compiler_version"
+    ]
+}
