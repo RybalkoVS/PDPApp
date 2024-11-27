@@ -3,6 +3,7 @@ apply from: "$rootDir/buildscripts/app_properties.gradle"
 ext {
     applyModuleConfig = { boolean isApp = false ->
         apply plugin: 'org.jetbrains.kotlin.android'
+        apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 
         if (isApp) {
             apply plugin: 'com.android.application'
@@ -64,11 +65,8 @@ ext {
                 }
             }
             compileOptions {
-                sourceCompatibility JavaVersion.VERSION_1_8
-                targetCompatibility JavaVersion.VERSION_1_8
-            }
-            kotlinOptions {
-                jvmTarget = '1.8'
+                sourceCompatibility JavaVersion.VERSION_21
+                targetCompatibility JavaVersion.VERSION_21
             }
         }
     }
