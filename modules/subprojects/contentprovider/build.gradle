@@ -1,12 +1,10 @@
 apply from: "$rootDir/buildscripts/dependencies.gradle"
 apply from: "$rootDir/buildscripts/modules_configuration.gradle"
 
-applyModuleConfig(true)
+applyModuleConfig()
 
 dependencies {
 
-    resolveModules("subprojects")
-    resolveModules("core")
     //declare multiple dependencies
     implementation composeDependencies.values()
     implementation androidCoreDependencies.values()

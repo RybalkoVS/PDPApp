@@ -2,9 +2,6 @@ apply from: "$rootDir/buildscripts/app_properties.gradle"
 
 ext {
     applyModuleConfig = { boolean isApp = false ->
-        apply plugin: 'org.jetbrains.kotlin.android'
-        apply plugin: 'org.jetbrains.kotlin.plugin.compose'
-
         if (isApp) {
             apply plugin: 'com.android.application'
 
@@ -14,25 +11,42 @@ ext {
                 }
 
                 buildTypes {
-                    applicationVariants.all { variant ->
-                        variant.outputs.all {
-                            outputFileName = "$default_app_package.${variant.buildType.name}.apk"
+                    applicationVariants.every {
+                        variant.outputs.each { output ->
+                            output.outputFileName = "$default_app_package.${variant.buildType.name}.apk"
                         }
                     }
-                }
-                flavorDimensions "version"
-                productFlavors {
-                    beta {
-                        applicationIdSuffix ".beta"
+
+                    release {
+                        minifyEnabled true
+                        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
                     }
-                    full {
-                        applicationIdSuffix ".full"
+                    debug {
+                        minifyEnabled false
+                        debuggable true
                     }
                 }
             }
         } else {
             apply plugin: 'com.android.library'
+
+            android {
+                buildTypes {
+                    release {
+                        minifyEnabled false
+                    }
+                    debug {
+                        minifyEnabled false
+                        debuggable true
+                    }
+                }
+            }
         }
+
+        apply plugin: 'org.jetbrains.kotlin.android'
+        apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+        apply plugin: 'kotlin-android'
+        apply plugin: 'kotlin-kapt'
 
         android {
             namespace = default_app_package
@@ -55,18 +69,31 @@ ext {
                 testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             }
 
-            buildTypes {
-                release {
-                    minifyEnabled true
-                    proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            flavorDimensions "version"
+
+            productFlavors {
+                dev {
+                    dimension = "version"
+                    versionNameSuffix "-dev"
                 }
-                debug {
-                    minifyEnabled false
+                prod {
+                    dimension = "version"
+                    versionNameSuffix "-prod"
                 }
             }
+
             compileOptions {
                 sourceCompatibility JavaVersion.VERSION_21
                 targetCompatibility JavaVersion.VERSION_21
+            }
+        }
+    }
+
+    resolveModules = { dir ->
+        dependencies {
+            def modules = new File(rootProject.projectDir, "modules/$dir")
+            modules.list().each { moduleName ->
+                implementation project(":$moduleName")
             }
         }
     }

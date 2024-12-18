@@ -13,6 +13,17 @@ dependencyResolutionManagement {
     }
 }
 
+def findAllModules = { dir ->
+    def files = new File(rootProject.projectDir, "modules/$dir")
+    files.listFiles().each { file ->
+        def name = file.name
+        include ":$name"
+        project(":$name").projectDir = new File(rootDir, "modules/$dir/$name")
+    }
+}
+
 rootProject.name = "PDPApp"
 include(":app")
- 
+
+findAllModules("subprojects")
+findAllModules("core")
