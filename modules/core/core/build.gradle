@@ -5,7 +5,6 @@ applyModuleConfig()
 
 dependencies {
 
-    //declare multiple dependencies
     implementation composeDependencies.values()
     implementation androidCoreDependencies.values()
     implementation diDependencies["dagger2"]

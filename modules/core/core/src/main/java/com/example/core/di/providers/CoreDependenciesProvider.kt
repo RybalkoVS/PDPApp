@@ -1,5 +1,4 @@
 package com.example.core.di.providers
 
-interface CoreDependenciesProvider: NavigationProvider {
-
-}
+interface CoreDependenciesProvider :
+    NavigationProvider

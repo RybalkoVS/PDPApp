@@ -5,7 +5,7 @@ applyModuleConfig()
 
 dependencies {
 
-    //declare multiple dependencies
+    implementation project(":core")
     implementation composeDependencies.values()
     implementation androidCoreDependencies.values()
     implementation diDependencies["dagger2"]

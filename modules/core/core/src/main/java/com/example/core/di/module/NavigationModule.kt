@@ -1,13 +1,13 @@
 package com.example.core.di.module
 
-import com.example.core.navigation.AppNavigator
-import com.example.core.navigation.AppNavigatorImpl
+import com.example.core.navigation.navigator.AppNavigator
+import com.example.core.navigation.navigator.AppNavigatorImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-object NavigationModule {
+interface NavigationModule {
 
-    @Provides
-    fun provideNavigator(): AppNavigator = AppNavigatorImpl()
+    @Binds
+    fun provideNavigator(navigator: AppNavigatorImpl): AppNavigator
 }
