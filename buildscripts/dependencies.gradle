@@ -12,17 +12,23 @@ ext {
 
     //compose
     composeDependencies = [
-            material3 : "androidx.compose.material3:material3:$compose_material3_version",
-            foundation: "androidx.compose.foundation:foundation:$compose_version",
-            compose_ui: "androidx.compose.ui:ui:$compose_version",
-            compose_runtime: "androidx.compose.runtime:runtime:$compose_version",
-            compose_activity: "androidx.activity:activity-compose:$compose_activity_version",
-            comose_compoler: "androidx.compose.compiler:compiler:$compose_compiler_version",
+            material3         : "androidx.compose.material3:material3:$compose_material3_version",
+            foundation        : "androidx.compose.foundation:foundation:$compose_version",
+            compose_ui        : "androidx.compose.ui:ui:$compose_version",
+            compose_runtime   : "androidx.compose.runtime:runtime:$compose_version",
+            compose_activity  : "androidx.activity:activity-compose:$compose_activity_version",
+            comose_compoler   : "androidx.compose.compiler:compiler:$compose_compiler_version",
             compose_navigation: "androidx.navigation:navigation-compose:$compose_nav_version"
     ]
 
     diDependencies = [
             dagger2        : "com.google.dagger:dagger:$dagger2_version",
             dagger2Compiler: "com.google.dagger:dagger-compiler:$dagger2Compiler_version",
+    ]
+
+    roomDependencies = [
+            room        : "androidx.room:room-runtime:$room_version",
+            roomCompiler: "androidx.room:room-compiler:$room_version",
+            roomKtx     : "androidx.room:room-ktx:$room_version"
     ]
 }

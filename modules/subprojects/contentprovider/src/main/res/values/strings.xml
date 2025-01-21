@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Content Provider  -->
+    <string name="content_provider_title">Products content provider</string>
+    <string name="action_show_all">Show all</string>
+    <string name="action_insert">Insert</string>
+    <string name="insert_dialog_title">Insert new product</string>
+    <string name="action_update">Update</string>
+    <string name="update_dialog_title">Update product</string>
+    <string name="empty_products_state">Empty list</string>
+    <string name="price_hint">price</string>
+    <string name="name_hint">name</string>
+</resources>

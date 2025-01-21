@@ -1,3 +1,5 @@
 <resources>
+    <!--  App  -->
     <string name="app_name">PDPApp</string>
+    <string name="subprojects_title">Subprojects</string>
 </resources>

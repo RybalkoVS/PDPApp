@@ -1,5 +1,5 @@
 package com.example.pdpapp.di.screentypealias
 
-import com.example.core.navigation.screen.Screen
+import com.example.pdpapp.core.presentation.screen.Screen
 
-typealias TypedScreen = @JvmSuppressWildcards Screen
+typealias TypedScreen = @JvmSuppressWildcards Screen<*>

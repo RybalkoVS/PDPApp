@@ -1,8 +1,12 @@
 package com.example.pdpapp.di.component
 
-import com.example.core.di.component.CoreDiComponent
-import com.example.core.di.providers.CoreDependenciesProvider
-import com.example.core.di.providers.NavigationProvider
+import androidx.activity.ComponentActivity
+import com.example.pdpapp.contentprovider.di.component.ContentProviderComponent
+import com.example.pdpapp.core.di.component.CoreDiComponent
+import com.example.pdpapp.core.di.providers.AndroidComponentsProvider
+import com.example.pdpapp.core.di.providers.CoreDependenciesProvider
+import com.example.pdpapp.core.di.providers.DialogsProvider
+import com.example.pdpapp.core.di.providers.NavigationProvider
 import com.example.pdpapp.MainActivity
 import com.example.pdpapp.di.module.ScreensModule
 import dagger.Component
@@ -10,19 +14,28 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [NavigationProvider::class],
+    dependencies = [
+        NavigationProvider::class,
+        AndroidComponentsProvider::class,
+        ContentProviderComponent::class,
+        DialogsProvider::class
+    ],
     modules = [ScreensModule::class]
 )
-interface AppComponent : CoreDependenciesProvider {
+abstract class AppComponent : CoreDependenciesProvider {
 
     companion object {
-        fun create(): AppComponent {
-            val coreDiComponent = CoreDiComponent.create()
+        fun create(activity: ComponentActivity): AppComponent {
+            val coreDiComponent = CoreDiComponent.create(activity)
+
             return DaggerAppComponent.builder()
+                .contentProviderComponent(ContentProviderComponent.create(coreDiComponent))
+                .androidComponentsProvider(coreDiComponent)
                 .navigationProvider(coreDiComponent)
+                .dialogsProvider(coreDiComponent)
                 .build()
         }
     }
 
-    fun inject(mainActivity: MainActivity)
+    abstract fun inject(mainActivity: MainActivity)
 }

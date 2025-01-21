@@ -10,4 +10,7 @@ dependencies {
     implementation androidCoreDependencies.values()
     implementation diDependencies["dagger2"]
     kapt diDependencies["dagger2Compiler"]
+    implementation roomDependencies["room"]
+    implementation roomDependencies["roomKtx"]
+    kapt roomDependencies["roomCompiler"]
 }
