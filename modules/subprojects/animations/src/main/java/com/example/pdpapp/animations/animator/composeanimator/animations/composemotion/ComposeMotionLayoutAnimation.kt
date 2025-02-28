@@ -45,7 +45,7 @@ private const val MIN_PROGRESS = 0f
 class ComposeMotionLayoutAnimation @Inject constructor() : AnimationContract {
 
     override val type: AnimationType = AnimationType.MotionLayout
-    private var progress by mutableFloatStateOf(0f)
+    private var progress by mutableFloatStateOf(MIN_PROGRESS)
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private var transition by mutableStateOf(Transitions.Default)
     private var isPlaying: Boolean = false
@@ -63,7 +63,7 @@ class ComposeMotionLayoutAnimation @Inject constructor() : AnimationContract {
     }
 
     private suspend fun startTransition(type: Transitions) {
-        progress = 0f
+        progress = MIN_PROGRESS
         transition = type
         while (progress <= MAX_PROGRESS) {
             delay(FRAME_DURATION)
