@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="animations_title">Animations</string>
+    <string name="animator_object_title">Animator object</string>
+    <string name="compose_animator_title">Compose animator</string>
+    <string name="view_animator_title">View animator</string>
+    <string name="start_animation_title">Start %s animation</string>
+</resources>

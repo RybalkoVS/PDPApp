@@ -7,6 +7,6 @@ enum class Routes(
     Root("Root", true),
     ContentProvider("ContentProvider", true),
     Algorithms("Algorithms"),
-    Animations("Animations"),
+    Animations("Animations", true),
     CustomView("CustomView")
 }

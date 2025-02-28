@@ -19,7 +19,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,7 +40,6 @@ import com.example.pdpapp.core.theme_core.dimens.SystemDimens
 import com.example.pdpapp.core.theme_core.font.SystemFonts
 import javax.inject.Inject
 
-@OptIn(ExperimentalMaterial3Api::class)
 class ContentProviderScreen @Inject constructor(
     navigator: AppNavigator,
     contentResolver: ContentResolver,

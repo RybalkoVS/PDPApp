@@ -20,4 +20,8 @@ ext {
 
     //Room
     room_version = '2.6.1'
+
+    //Animations
+    lottie_version = "6.6.2"
+    motion_layout = "1.1.1"
 }

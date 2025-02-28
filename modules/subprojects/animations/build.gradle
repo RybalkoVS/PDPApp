@@ -1,0 +1,14 @@
+apply from: "$rootDir/buildscripts/dependencies.gradle"
+apply from: "$rootDir/buildscripts/modules_configuration.gradle"
+
+applyModuleConfig()
+
+dependencies {
+
+    implementation project(":core")
+    implementation composeDependencies.values()
+    implementation androidCoreDependencies.values()
+    implementation diDependencies["dagger2"]
+    kapt diDependencies["dagger2Compiler"]
+    implementation animationsDependencies.values()
+}
